@@ -1,3 +1,6 @@
+#from distutils.log import debug
+from cgi import print_arguments
+from re import A
 import sys
 
 #字符串
@@ -42,14 +45,34 @@ def reverseWords(input):
     inputWords=inputWords[-1::-1]
  
     # 重新组合字符串
-    output = ' '.join(inputWords)
-     
+    output = ' '.join(inputWords)         
     return output
+
+
+#冒泡排序
+def bubbleSort(alist):
+    for passnum in range(len(alist)-1,0,-1):
+        for i in range(passnum):
+            if alist[i]>alist[i+1]:
+                temp = alist[i]
+                alist[i] = alist[i+1]
+                alist[i+1] = temp
+    return alist
+
  
 if __name__ == "__main__":
     input = 'I like runoob'
     rw = reverseWords(input)
     print(rw)
+
+    alist = [54,26,93,17,77,31,44,55,20]
+    blist = bubbleSort(alist)
+    print(blist)
+    print(alist)
+    print(alist[::-1])
+    print(alist[-1::-1])
+    print(alist[-2::-1])
+    
 
 
 
