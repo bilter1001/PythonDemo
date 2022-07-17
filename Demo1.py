@@ -1,9 +1,9 @@
+#from distutils.log import debug
+from cgi import print_arguments
+from re import A
 import sys
 
-
-
-
-
+import urllib.request
 
 #字符串
 str='123456789'
@@ -47,14 +47,70 @@ def reverseWords(input):
     inputWords=inputWords[-1::-1]
  
     # 重新组合字符串
-    output = ' '.join(inputWords)
-     
+    output = ' '.join(inputWords)         
     return output
+
+
+#冒泡排序
+def bubbleSort(alist):
+    for passnum in range(len(alist)-1,0,-1):
+        for i in range(passnum):
+            if alist[i]>alist[i+1]:
+                temp = alist[i]
+                alist[i] = alist[i+1]
+                alist[i+1] = temp
+    return alist
+
+#获取系统时间
+def getTime():
+    import time
+    return time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())
+
+
+
+#爬取网页的内容
+def getHtml(url):
+    page = urllib.request.urlopen(url)
+    html = page.read()
+    return html
+
+#遍历文件夹
+def getFile(path):
+    import os
+    for root, dirs, files in os.walk(path):
+        for file in files:
+            print(file)
+            print(os.path.join(root, file))
+
+
+
  
 if __name__ == "__main__":
     input = 'I like runoob'
     rw = reverseWords(input)
     print(rw)
+
+    alist = [54,26,93,17,77,31,44,55,20]
+    blist = bubbleSort(alist)
+    print(blist)
+    print(alist)
+    print(alist[::-1])
+    print(alist[-1::-1])
+    print(alist[-2::-1])
+
+    print(getTime())
+
+    getFile('D:\我的文档\Pictures\作业指导书')
+
+
+
+
+
+
+
+
+    
+
 
 
 
