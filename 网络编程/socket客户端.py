@@ -22,5 +22,6 @@ msg = s.recv(1024)
 
 s.close()
 
+
 print (msg.decode('utf-8'))
 
