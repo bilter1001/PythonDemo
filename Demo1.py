@@ -99,7 +99,7 @@ if __name__ == "__main__":
     print(alist[-2::-1])
 
     print(getTime())
-
+   
     getFile('D:\我的文档\Pictures\作业指导书')
 
 
