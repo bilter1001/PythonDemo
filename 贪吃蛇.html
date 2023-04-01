@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>贪吃蛇游戏</title>
+    <style>
+        /* 添加样式 */
+    </style>
+</head>
+<body>
+    <canvas id="gameCanvas" width="300" height="300"></canvas>
+    <script>
+        // 添加贪吃蛇游戏的JavaScript代码
+        // 获取画布和设置上下文
+        const canvas = document.getElementById("gameCanvas");
+        const ctx = canvas.getContext("2d");
+        
+        var snake = {
+            body: [
+                { x: 200, y: 200 },
+                { x: 190, y: 200 },
+                { x: 180, y: 200 },
+                { x: 170, y: 200 },
+                { x: 160, y: 200 }
+            ],
+            color: "green",
+            direction: "right",
+            speed: 10
+            };
+
+        var food = {
+            x: Math.round(Math.random() * (490 - snake.speed) / snake.speed) * snake.speed,
+            y:
+                Math.round(Math.random() * (490 - snake.speed) / snake.speed) * snake.speed,
+            color: "red",
+            size: snake.speed
+            };
+
+            function drawSnake() {
+    ctx.fillStyle = snake.color;
+    for (var i = 0; i < snake.body.length; i++) {
+      ctx.fillRect(snake.body[i].x, snake.body[i].y, snake.speed, snake.speed);
+    }
+}
+
+function drawFood() {
+    ctx.fillStyle = food.color;
+    ctx.fillRect(food.x, food.y, food.size, food.size);
+}
+
+document.addEventListener("keydown", function(event) {
+    switch (event.keyCode) {
+      case 37:
+        if (snake.direction != "right") {
+          //防止反向移动
+          snake.direction = "left";
+        }
+        break;
+      case 38:
+        if (snake.direction != "down") {
+          //防止反向移动
+          snake.direction = "up";
+        }
+        break;
+      case 39:
+        if (snake.direction != "left") {
+          //防止反向移动
+          snake.direction = "right";
+        }
+        break;
+      case 40:
+        if (snake.direction != "up") {
+          //防止反向移动
+          snake.direction = "down";
+        }
+        break;
+      default:
+        break;
+    }
+});
+        
+    </script>
+</body>
+</html>
