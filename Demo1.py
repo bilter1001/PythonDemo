@@ -84,6 +84,25 @@ def getFile(path):
             print(os.path.join(root, file))
 
 
+# 获取网页中的gif图片
+def getGifImages(url):
+    import re
+    html = getHtml(url)
+    reg = r'src="(.+?\.gif)"'
+    imgre = re.compile(reg)
+    imglist = re.findall(imgre, html.decode('utf-8'))
+    return imglist
+
+# 绘制一个圆，并显示
+def drawCircle(x, y, r, color):
+    import turtle
+    turtle.pencolor(color)
+    turtle.penup()
+    turtle.goto(x, y)
+    turtle.pendown()
+    turtle.circle(r) 
+
+
 if __name__ == "__main__":
     input = 'I like runoob'
     rw = reverseWords(input)
@@ -99,4 +118,11 @@ if __name__ == "__main__":
 
     print(getTime())
 
-    getFile('D:\我的文档\Pictures\作业指导书')
+    drawCircle(0, 0, 100, 'red')
+
+    # getFile('D:\我的文档\Pictures\作业指导书')
+
+
+
+
+
